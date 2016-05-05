@@ -1,0 +1,125 @@
+{
+	"name": "Bookmarks",
+	"displayName": "Bookmarks",
+	"description": "Mark lines and jump to them",
+	"version": "1.0.0",
+	"publisher": "Yale",
+	"galleryBanner": {
+		"color": "#000000",
+		"theme": "dark"
+	},
+	"engines": {
+		"wing": "^3.0.4"
+	},
+	"categories": [
+		"Other"
+	],
+    "keywords": [
+        "bookmarks",
+        "sticky"
+    ],
+	"icon": "images/icon.png",
+    "license": "SEE LICENSE IN LICENSE.md",
+	"homepage": "https://github.com/yale8848/wing-bookmarks/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yale8848/wing-bookmarks.git"
+	},
+	"bugs": {
+		"url": "https://github.com/yale8848/wing-bookmarks/issues"
+	},
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [{
+			"command": "bookmarks.toggle",
+			"title": "Bookmarks: Toggle"
+		},{
+			"command": "bookmarks.jumpToNext",
+			"title": "Bookmarks: Jump to Next"
+		},{
+			"command": "bookmarks.jumpToPrevious",
+			"title": "Bookmarks: Jump to Previous"
+		},{
+			"command": "bookmarks.list",
+			"title": "Bookmarks: List"
+		},{
+			"command": "bookmarks.clear",
+			"title": "Bookmarks: Clear"
+		}],
+		"configuration": {
+			"type": "object",
+			"title": "Bookmarks Configuration",
+			"properties": {
+				"bookmarks.saveBookmarksBetweenSessions": {
+					"type": "boolean",
+					"default": false,
+					"description": "Allow bookmarks to be saved and restored, even if you close or change the Project"
+				},
+				"bookmarks.gutterIconPath": {
+					"type": "string",
+					"default": "",
+					"description": "Path to another image to be presented as Bookmark"
+				},
+                "bookmarks.navigateThroughAllFiles": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Allow navigation look for bookmarks in all files in the project, instead of only the current"
+                },
+                "bookmarks.useStickyBookmarks": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "The bookmarks will be glued to the line of code instead of the line of the file"
+                }
+			}
+		},
+		"keybindings": [
+			{
+				"command": "bookmarks.toggle",
+				"key": "ctrl+alt+k",
+				"mac": "cmd+alt+k",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "bookmarks.jumpToNext",
+				"key": "ctrl+alt+n",
+				"mac": "cmd+alt+n",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "bookmarks.jumpToPrevious",
+				"key": "ctrl+alt+p",
+				"mac": "cmd+alt+p",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "bookmarks.list",
+				"key": "ctrl+alt+l",
+				"mac": "cmd+alt+l",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "bookmarks.clear",
+				"key": "ctrl+alt+c",
+				"mac": "cmd+alt+c",
+				"when": "editorTextFocus"
+			}
+			
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/egretwing/bin/compile",
+		"compile": "node ./node_modules/egretwing/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/egretwing/bin/install"
+	},
+	"dependencies": {
+		"underscore.string": "^3.2.2",
+		"figlet": "^1.1.1"
+	},
+	"devDependencies": {
+		"egretwing": "^3.0.4",
+		"typescript": "^1.7.5"
+	}
+}

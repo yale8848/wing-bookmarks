@@ -1,0 +1,6 @@
+out
+node_modules
+issues
+debug.log
+npm-debug.log
+.editorconfig
